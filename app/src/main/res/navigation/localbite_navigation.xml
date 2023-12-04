@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/localbite_navigation"
+    app:startDestination="@id/nav_home">
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.dicoding.capstonemd.homepage.HomepageFragment"
+        android:label="HomepageFragment" />
+    <fragment
+        android:id="@+id/nav_chatbot"
+        android:name="com.dicoding.capstonemd.chatbot.ChatbotFragment"
+        android:label="ChatbotFragment" />
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="com.dicoding.capstonemd.history.HistoryFragment"
+        android:label="HistoryFragment" />
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.dicoding.capstonemd.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+</navigation>

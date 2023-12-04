@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">CapstoneMD</string>
+    <string name="title_home">Home</string>
+    <string name="title_chatbot">Chatbot</string>
+    <string name="title_history">History</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_chatbot_text">This is the Chatbot Fragment</string>
+    <string name="fragment_homepage_text">This is the Homepage Fragment</string>
+    <string name="fragment_profile_text">This is the Profile Fragment</string>
+    <string name="fragment_history_text">This is the History Fragment</string>
+    <string name="detail_title_text">Your beautiful title goes here</string>
+    <string name="detail_subtitle_text">Your beautiful description goes here</string>
+    <string name="content_tab_nutrition">This is the Nutrition tab</string>
+    <string name="content_tab_maps">This is the Maps tab</string>
+    <string name="tab_text_1">Maps</string>
+    <string name="tab_text_2">Nutrition</string>
+    <string name="profile_name_text">John Doe</string>
+    <string name="profile_email_text">johndoe123@gmail.com</string>
+    <string name="homepage_title_text">Welcome, John Doe!</string>
+    <string name="homepage_subtitle_text">Mau makan apa hari ini?</string>
+    <string name="see_detail">Lihat Detail</string>
+</resources>
