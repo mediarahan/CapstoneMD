@@ -3,8 +3,8 @@ package com.dicoding.capstonemd.adapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.dicoding.capstonemd.detail.TabMapsFragment
-import com.dicoding.capstonemd.detail.TabNutritionFragment
+import com.dicoding.capstonemd.ui.detail.TabMapsFragment
+import com.dicoding.capstonemd.ui.detail.TabNutritionFragment
 
 class SectionsPagerAdapter (activity: AppCompatActivity): FragmentStateAdapter(activity) {
     override fun getItemCount(): Int {

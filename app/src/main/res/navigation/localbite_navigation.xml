@@ -5,18 +5,18 @@
     app:startDestination="@id/nav_home">
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.dicoding.capstonemd.homepage.HomepageFragment"
+        android:name="com.dicoding.capstonemd.ui.homepage.HomepageFragment"
         android:label="HomepageFragment" />
     <fragment
         android:id="@+id/nav_chatbot"
-        android:name="com.dicoding.capstonemd.chatbot.ChatbotFragment"
+        android:name="com.dicoding.capstonemd.ui.chatbot.ChatbotFragment"
         android:label="ChatbotFragment" />
     <fragment
         android:id="@+id/nav_history"
-        android:name="com.dicoding.capstonemd.history.HistoryFragment"
+        android:name="com.dicoding.capstonemd.ui.history.HistoryFragment"
         android:label="HistoryFragment" />
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.dicoding.capstonemd.profile.ProfileFragment"
+        android:name="com.dicoding.capstonemd.ui.profile.ProfileFragment"
         android:label="ProfileFragment" />
 </navigation>

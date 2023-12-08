@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home,
                 R.id.nav_chatbot,
                 R.id.nav_history,
-                R.id.nav_profile
             )
         )
 

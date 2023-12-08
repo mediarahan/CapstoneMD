@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.capstonemd.data.Fake
 import com.dicoding.capstonemd.databinding.SimpleRecommendationRv2Binding
-import com.dicoding.capstonemd.detail.DetailActivity
+import com.dicoding.capstonemd.ui.detail.DetailActivity
 
 class FakeAdapter2 : ListAdapter<Fake, FakeAdapter2.ViewHolder>(DIFF_CALLBACK) {
 

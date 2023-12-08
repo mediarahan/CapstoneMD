@@ -1,4 +1,4 @@
-package com.dicoding.capstonemd.history
+package com.dicoding.capstonemd.ui.history
 
 import android.os.Bundle
 import android.view.LayoutInflater
