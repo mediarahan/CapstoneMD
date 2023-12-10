@@ -45,4 +45,7 @@
     <string name="login_message_text">Masukkan data dirimu dulu, ya!</string>
     <string name="login_account_text">Don\'t have an account?</string>
     <string name="login_account_login_text">Register here.</string>
+
+    <string name="narenda_wicaksono">Narenda Wicaksono</string>
+    <string name="narenda_dicoding_com">narenda@dicoding.com</string>
 </resources>

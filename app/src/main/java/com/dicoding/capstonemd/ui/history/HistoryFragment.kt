@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.capstonemd.adapter.FakeAdapter
 import com.dicoding.capstonemd.adapter.FakeAdapter2
-import com.dicoding.capstonemd.data.Fake
-import com.dicoding.capstonemd.data.FakeData
+import com.dicoding.capstonemd.data.local.fake.Fake
+import com.dicoding.capstonemd.data.local.fake.FakeData
 import com.dicoding.capstonemd.databinding.FragmentHistoryBinding
 
 class HistoryFragment : Fragment() {

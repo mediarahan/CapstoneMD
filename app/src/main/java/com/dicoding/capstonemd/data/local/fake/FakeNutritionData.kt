@@ -1,4 +1,4 @@
-package com.dicoding.capstonemd.data
+package com.dicoding.capstonemd.data.local.fake
 
 object FakeNutritionData {
     val nutritionData = listOf(

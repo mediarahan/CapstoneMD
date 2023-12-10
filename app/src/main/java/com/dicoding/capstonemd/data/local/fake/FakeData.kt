@@ -1,4 +1,4 @@
-package com.dicoding.capstonemd.data
+package com.dicoding.capstonemd.data.local.fake
 
 import com.dicoding.capstonemd.R
 

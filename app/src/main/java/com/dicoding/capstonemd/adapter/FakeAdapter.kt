@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dicoding.capstonemd.data.Fake
+import com.dicoding.capstonemd.data.local.fake.Fake
 import com.dicoding.capstonemd.databinding.SimpleRecommendationRvBinding
 import com.dicoding.capstonemd.ui.detail.DetailActivity
 

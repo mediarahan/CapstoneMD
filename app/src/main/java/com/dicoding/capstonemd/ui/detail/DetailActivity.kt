@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.viewpager2.widget.ViewPager2
-import com.bumptech.glide.Glide
 import com.dicoding.capstonemd.R
 import com.dicoding.capstonemd.adapter.SectionsPagerAdapter
 
-import com.dicoding.capstonemd.data.FakeNutritionData
-import com.dicoding.capstonemd.data.Nutrition
+import com.dicoding.capstonemd.data.local.fake.FakeNutritionData
 import com.dicoding.capstonemd.databinding.ActivityDetailBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
