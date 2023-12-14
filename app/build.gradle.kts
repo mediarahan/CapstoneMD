@@ -71,4 +71,7 @@ dependencies {
     //circle iv
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
+    //datastore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
 }

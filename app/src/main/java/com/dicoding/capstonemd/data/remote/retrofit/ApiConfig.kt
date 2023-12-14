@@ -18,7 +18,7 @@ object ApiConfig {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://localbitebackendnew.safira1003.repl.co:8081")
+            .baseUrl("https://localbitebackenduntuktestingmd2.safira1003.repl.co/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

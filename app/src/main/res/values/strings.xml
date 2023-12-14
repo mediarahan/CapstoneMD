@@ -48,4 +48,7 @@
 
     <string name="narenda_wicaksono">Narenda Wicaksono</string>
     <string name="narenda_dicoding_com">narenda@dicoding.com</string>
+    <string name="verify_hint">Kami telah mengirim kode 6-digit ke email anda.</string>
+    <string name="submit">SUBMIT</string>
+    <string name="verification">Verification</string>
 </resources>
