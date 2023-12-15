@@ -2,6 +2,7 @@ package com.dicoding.capstonemd.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
 import com.dicoding.capstonemd.data.remote.response.RegisterResponse
 import com.dicoding.capstonemd.data.remote.retrofit.ApiService
@@ -10,6 +11,7 @@ import com.dicoding.capstonemd.Result
 import com.dicoding.capstonemd.data.remote.response.LoginResponse
 import com.dicoding.capstonemd.data.remote.response.VerifyResponse
 import com.dicoding.capstonemd.pref.UserModel
+import kotlinx.coroutines.flow.map
 import java.lang.Exception
 
 class LocalbiteRepository(
@@ -59,6 +61,16 @@ class LocalbiteRepository(
         } catch (e:Exception) {
             emit(Result.Error(e.message.toString()))
         }
+    }
+
+    suspend fun logout() {
+        userPreference.logout()
+    }
+
+    fun observeUserLoginStatus(): LiveData<Boolean?> {
+        return userPreference.getSession().map { userModel ->
+            userModel.isLogin
+        }.asLiveData()
     }
 
     companion object {

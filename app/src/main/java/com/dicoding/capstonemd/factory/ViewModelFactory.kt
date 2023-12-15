@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.dicoding.capstonemd.di.Injection
 import com.dicoding.capstonemd.repository.LocalbiteRepository
 import com.dicoding.capstonemd.ui.login.LoginViewModel
+import com.dicoding.capstonemd.ui.main.MainViewModel
 import com.dicoding.capstonemd.ui.register.RegisterViewModel
 import com.dicoding.capstonemd.ui.verify.VerifyViewModel
 
@@ -22,6 +23,9 @@ class ViewModelFactory(private val repository: LocalbiteRepository) : ViewModelP
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(MainViewModel::class.java) -> {
+                MainViewModel(repository) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

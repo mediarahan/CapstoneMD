@@ -31,7 +31,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
                 preferences[EMAIL_KEY] ?: "",
                 preferences[A_TOKEN_KEY] ?: "",
                 preferences[R_TOKEN_KEY] ?: "",
-                preferences[IS_LOGIN_KEY] ?: true,
+                preferences[IS_LOGIN_KEY] ?: false
             )
         }
     }

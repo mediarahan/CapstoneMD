@@ -12,12 +12,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.dicoding.capstonemd.MainActivity
+import com.dicoding.capstonemd.ui.main.MainActivity
 import com.dicoding.capstonemd.R
 import com.dicoding.capstonemd.databinding.ActivityLoginBinding
 import com.dicoding.capstonemd.factory.ViewModelFactory
 import com.dicoding.capstonemd.ui.register.RegisterActivity
-import com.dicoding.capstonemd.ui.verify.VerifyActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -71,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
         binding.loginSubmitBtn.setOnClickListener {
             val email = binding.loginEmailEd.text.toString()
             val password = binding.loginPasswordEd.text.toString()
+
             loginViewModel.login(email, password).observe(this@LoginActivity) { result ->
                 if (result != null) {
                     when (result) {

@@ -38,4 +38,6 @@ class HomepageFragment : Fragment() {
         binding.rvFoodRecommendation.adapter = adapter
     }
 
+
+
 }

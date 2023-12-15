@@ -28,7 +28,6 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
 
         val name = intent.getStringExtra("name")
         val avatarUrl = intent.getIntExtra("avatar",-1)

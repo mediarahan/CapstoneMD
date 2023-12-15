@@ -11,7 +11,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.dicoding.capstonemd.MainActivity
 import com.dicoding.capstonemd.Result
 import com.dicoding.capstonemd.R
 import com.dicoding.capstonemd.databinding.ActivityVerifyBinding

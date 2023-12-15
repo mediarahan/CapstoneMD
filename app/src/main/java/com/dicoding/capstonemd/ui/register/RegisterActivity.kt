@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -11,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.dicoding.capstonemd.ui.main.MainActivity
 import com.dicoding.capstonemd.R
 import com.dicoding.capstonemd.Result
 import com.dicoding.capstonemd.databinding.ActivityRegisterBinding
@@ -39,19 +41,27 @@ class RegisterActivity : AppCompatActivity() {
             factory
         }.value
 
-        setupView()
-        setupAction()
+        registerViewModel.isUserLoggedIn.observe(this) {isUserLoggedIn ->
+            Log.d("LiveData", "isUserLoggedIn changed: $isUserLoggedIn")
+            if(isUserLoggedIn == true) {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            } else {
+                setupView()
+                setupAction()
 
-        binding.tvActionLogin.setOnClickListener {
-            //intent text ke login
-            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-            startActivity(intent)
+                binding.tvActionLogin.setOnClickListener {
+                    //intent text ke login
+                    val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                    startActivity(intent)
+                }
+
+                registerSubmitBtn = findViewById(R.id.register_submit_btn)
+                registerNameEd = findViewById(R.id.register_name_ed)
+                registerEmailEd = findViewById(R.id.register_email_ed)
+                registerPasswordEd = findViewById(R.id.register_password_ed)
+            }
         }
-
-        registerSubmitBtn = findViewById(R.id.register_submit_btn)
-        registerNameEd = findViewById(R.id.register_name_ed)
-        registerEmailEd = findViewById(R.id.register_email_ed)
-        registerPasswordEd = findViewById(R.id.register_password_ed)
     }
 
     private fun setupView() {

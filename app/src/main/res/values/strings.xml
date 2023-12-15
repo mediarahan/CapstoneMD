@@ -18,7 +18,7 @@
     <string name="tab_text_2">Nutrition</string>
     <string name="profile_name_text">John Doe</string>
     <string name="profile_email_text">johndoe123@gmail.com</string>
-    <string name="homepage_title_text">Welcome, John Doe!</string>
+    <string name="homepage_title_text">Welcome, </string>
     <string name="homepage_subtitle_text">Mau makan apa hari ini?</string>
     <string name="see_detail">Lihat Detail</string>
     <string name="title_login">Login</string>
@@ -51,4 +51,5 @@
     <string name="verify_hint">Kami telah mengirim kode 6-digit ke email anda.</string>
     <string name="submit">SUBMIT</string>
     <string name="verification">Verification</string>
+    <string name="john_doe">John Doe</string>
 </resources>
