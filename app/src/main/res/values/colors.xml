@@ -8,4 +8,7 @@
 
     <color name="textColorPrimary">#ff6e01</color>
     <color name="textColorSecondary">#757575</color>
+
+    <color name="blaack">#000000</color>
+
 </resources>
