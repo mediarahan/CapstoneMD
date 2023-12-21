@@ -17,6 +17,9 @@
         android:theme="@style/Theme.CapstoneMD"
         tools:targetApi="31">
         <activity
+            android:name=".ui.question.QuestionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.settings.SettingsActivity"
             android:exported="false" />
 
