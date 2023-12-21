@@ -14,6 +14,8 @@ class TabMapsViewModel(private val repository: LocalbiteRepository) : ViewModel(
     private val _restaurantData = MutableLiveData<Result<List<Restaurant>>>()
     val restaurantData: LiveData<Result<List<Restaurant>>> = _restaurantData
 
+    val hiddenGems: LiveData<List<Restaurant>> = repository.getHiddenGems()
+
     fun fetchRestaurantData(menu: String, latitude: String, longitude: String, radius: Int) {
         viewModelScope.launch {
             _restaurantData.value = Result.Loading
@@ -24,10 +26,6 @@ class TabMapsViewModel(private val repository: LocalbiteRepository) : ViewModel(
                 _restaurantData.value = Result.Error(e.message.toString())
             }
         }
-    }
-
-    fun getAllRestaurant(): LiveData<List<Restaurant>> {
-        return repository.getAllRestaurant()
     }
 
     fun fetchRestaurantsByCategory(category: String) {
@@ -41,4 +39,6 @@ class TabMapsViewModel(private val repository: LocalbiteRepository) : ViewModel(
             }
         }
     }
+
+
 }

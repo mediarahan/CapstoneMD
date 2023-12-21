@@ -125,6 +125,10 @@ class LocalbiteRepository(
         return restaurantDao.getRestaurantsByCategory(category)
     }
 
+    fun getHiddenGems(): LiveData<List<Restaurant>> {
+        return restaurantDao.getHiddenGems()
+    }
+
     companion object {
         @Volatile
         private var instance: LocalbiteRepository? = null
