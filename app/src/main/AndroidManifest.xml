@@ -36,7 +36,10 @@
             android:exported="false" />
         <activity
             android:name=".ui.register.RegisterActivity"
-            android:exported="true"> <!-- Set exported to true for the launcher activity -->
+            android:exported="false" />
+        <activity
+            android:name=".ui.splashscreen.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
