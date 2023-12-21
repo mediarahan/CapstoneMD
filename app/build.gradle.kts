@@ -11,7 +11,7 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.dicoding.capstonemd"
+        applicationId = "com.dicoding.localbite"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -27,10 +27,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "API_KEY", "\"XXXX\"")
+            buildConfigField("String", "API_KEY", "\"AIzaSyAifXUUJFiZLxQT8ZJWuEtmqBoiHig1T8Q\"")
         }
         debug {
-            buildConfigField("String", "API_KEY", "\"XXXX\"")
+            buildConfigField("String", "API_KEY", "\"AIzaSyAifXUUJFiZLxQT8ZJWuEtmqBoiHig1T8Q\"")
         }
     }
     compileOptions {

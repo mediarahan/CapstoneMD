@@ -9,12 +9,12 @@ import com.dicoding.capstonemd.repository.LocalbiteRepository
 import com.dicoding.capstonemd.data.api.Restaurant
 import kotlinx.coroutines.launch
 
-
 class TabMapsViewModel(private val repository: LocalbiteRepository) : ViewModel() {
     private val _restaurantData = MutableLiveData<Result<List<Restaurant>>>()
     val restaurantData: LiveData<Result<List<Restaurant>>> = _restaurantData
 
-    val hiddenGems: LiveData<List<Restaurant>> = repository.getHiddenGems()
+    private val _hiddenGemRestaurantData = MutableLiveData<Result<List<Restaurant>>>()
+    val hiddenGemRestaurantData: LiveData<Result<List<Restaurant>>> = _hiddenGemRestaurantData
 
     fun fetchRestaurantData(menu: String, latitude: String, longitude: String, radius: Int) {
         viewModelScope.launch {
@@ -40,5 +40,16 @@ class TabMapsViewModel(private val repository: LocalbiteRepository) : ViewModel(
         }
     }
 
+    fun fetchHiddenGemRestaurantsByCategory(category: String) {
+        viewModelScope.launch {
+            _hiddenGemRestaurantData.value = Result.Loading
+            try {
+                val response = repository.getHiddenGemRestaurantsByCategory(category)
+                _hiddenGemRestaurantData.value = Result.Success(response)
+            } catch (e: Exception) {
+                _hiddenGemRestaurantData.value = Result.Error(e.message.toString())
+            }
+        }
+    }
 
 }

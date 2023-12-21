@@ -22,11 +22,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.capstonemd.adapter.RestaurantAdapter
 import com.dicoding.capstonemd.databinding.FragmentTabMapsBinding
 import com.dicoding.capstonemd.factory.ViewModelFactory
+import com.dicoding.capstonemd.pref.UserPreference
+import com.dicoding.capstonemd.pref.dataStore
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class TabMapsFragment : Fragment() {
+class TabMapsFragment() : Fragment() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var binding: FragmentTabMapsBinding
@@ -74,9 +78,21 @@ class TabMapsFragment : Fragment() {
             binding.rvRestaurant.layoutManager = LinearLayoutManager(requireContext())
             binding.rvRestaurant.adapter = restaurantAdapter
 
-            tabMapsViewModel.fetchRestaurantsByCategory(name)
-
             // Observe the LiveData
+
+            val pref = UserPreference.getInstance(requireContext().applicationContext.dataStore)
+            viewLifecycleOwner.lifecycleScope.launch {
+                pref.isHiddenGem().collect { isHiddenGem: Boolean ->
+                    if (isHiddenGem) {
+                        // Call method for hidden gem restaurants
+                        tabMapsViewModel.fetchHiddenGemRestaurantsByCategory(name)
+                    } else {
+                        // Call method for regular restaurants
+                        tabMapsViewModel.fetchRestaurantsByCategory(name)
+                    }
+                }
+            }
+
             tabMapsViewModel.restaurantData.observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Result.Loading -> {

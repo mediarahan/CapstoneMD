@@ -117,16 +117,12 @@ class LocalbiteRepository(
         return mappedRestaurants
     }
 
-    fun getAllRestaurant(): LiveData<List<Restaurant>> {
-        return restaurantDao.getAllRestaurant()
-    }
-
     suspend fun getRestaurantByCategory(category: String): List<Restaurant> {
         return restaurantDao.getRestaurantsByCategory(category)
     }
 
-    fun getHiddenGems(): LiveData<List<Restaurant>> {
-        return restaurantDao.getHiddenGems()
+    suspend fun getHiddenGemRestaurantsByCategory(category: String): List<Restaurant> {
+        return restaurantDao.getHiddenGemRestaurantsByCategory(category)
     }
 
     companion object {

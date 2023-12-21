@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CapstoneMD"
+rootProject.name = "LocalBite"
 include(":app")
  

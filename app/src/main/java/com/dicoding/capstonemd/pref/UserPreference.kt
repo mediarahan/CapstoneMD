@@ -42,6 +42,22 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
+    private object PreferencesKeys {
+        val IS_HIDDEN_GEM = booleanPreferencesKey("is_hidden_gem")
+    }
+
+    fun isHiddenGem(): Flow<Boolean> {
+        return dataStore.data.map { preferences ->
+            preferences[PreferencesKeys.IS_HIDDEN_GEM] ?: false
+        }
+    }
+
+    suspend fun saveHiddenGemSetting(isHiddenGem: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.IS_HIDDEN_GEM] = isHiddenGem
+        }
+    }
+
     companion object {
         @Volatile
         private var INSTANCE: UserPreference? = null

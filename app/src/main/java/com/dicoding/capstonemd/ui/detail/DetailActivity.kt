@@ -1,18 +1,18 @@
 package com.dicoding.capstonemd.ui.detail
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
-import android.widget.Toolbar
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.dicoding.capstonemd.R
 import com.dicoding.capstonemd.adapter.SectionsPagerAdapter
-
 import com.dicoding.capstonemd.data.local.fake.FakeNutritionData
 import com.dicoding.capstonemd.databinding.ActivityDetailBinding
+import com.dicoding.capstonemd.ui.settings.SettingsActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -36,7 +36,7 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         val name = intent.getStringExtra("name")
-        val avatarUrl = intent.getIntExtra("avatar",-1)
+        val avatarUrl = intent.getIntExtra("avatar", -1)
         val description = intent.getStringExtra("description")
 
         val nutritionId = intent.getIntExtra("id", -1)
@@ -52,7 +52,7 @@ class DetailActivity : AppCompatActivity() {
             val viewPager: ViewPager2 = findViewById(R.id.view_pager)
             viewPager.adapter = sectionsPagerAdapter
             val tabs: TabLayout = findViewById(R.id.tabs)
-            TabLayoutMediator(tabs,viewPager) { tab, position ->
+            TabLayoutMediator(tabs, viewPager) { tab, position ->
                 tab.text = resources.getString(TAB_TITLES[position])
             }.attach()
 
@@ -66,12 +66,13 @@ class DetailActivity : AppCompatActivity() {
 
         val customActionBar = layoutInflater.inflate(R.layout.custom_action_bar, null)
         val customImageView: ImageView = customActionBar.findViewById(R.id.customImageView)
-        customImageView.setImageResource(R.drawable.logo) // Replace with your actual drawable
+        customImageView.setImageResource(R.drawable.logo)
 
         supportActionBar?.customView = customActionBar
         supportActionBar?.elevation = 0f
-
     }
+
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
@@ -84,8 +85,10 @@ class DetailActivity : AppCompatActivity() {
                 onBackPressed()
                 return true
             }
+
             R.id.menu_hidden_gem -> {
-                // Handle the Hidden Gem menu item click
+                val intent = Intent(this@DetailActivity, SettingsActivity::class.java)
+                startActivity(intent)
                 return true
             }
         }

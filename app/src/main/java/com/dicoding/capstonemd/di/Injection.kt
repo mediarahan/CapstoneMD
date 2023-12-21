@@ -9,6 +9,7 @@ import com.dicoding.capstonemd.pref.dataStore
 import com.dicoding.capstonemd.repository.LocalbiteRepository
 
 object Injection {
+
     fun provideRepository(context: Context): LocalbiteRepository {
         val pref = UserPreference.getInstance(context.dataStore)
         val apiService = ApiConfig.getApiService()

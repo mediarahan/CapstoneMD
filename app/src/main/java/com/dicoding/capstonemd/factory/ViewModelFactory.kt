@@ -4,14 +4,17 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.capstonemd.di.Injection
+import com.dicoding.capstonemd.pref.UserPreference
+import com.dicoding.capstonemd.pref.dataStore
 import com.dicoding.capstonemd.repository.LocalbiteRepository
 import com.dicoding.capstonemd.ui.detail.TabMapsViewModel
 import com.dicoding.capstonemd.ui.login.LoginViewModel
 import com.dicoding.capstonemd.ui.main.MainViewModel
 import com.dicoding.capstonemd.ui.register.RegisterViewModel
+import com.dicoding.capstonemd.ui.settings.SettingsViewModel
 import com.dicoding.capstonemd.ui.verify.VerifyViewModel
 
-class ViewModelFactory(private val repository: LocalbiteRepository) : ViewModelProvider.Factory {
+class ViewModelFactory(private val repository: LocalbiteRepository, private val pref: UserPreference) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -31,6 +34,9 @@ class ViewModelFactory(private val repository: LocalbiteRepository) : ViewModelP
             modelClass.isAssignableFrom(TabMapsViewModel::class.java) -> {
                 TabMapsViewModel(repository) as T
             }
+            modelClass.isAssignableFrom(SettingsViewModel::class.java) -> {
+                SettingsViewModel(pref) as T
+            }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
@@ -44,7 +50,7 @@ class ViewModelFactory(private val repository: LocalbiteRepository) : ViewModelP
         fun getInstance(context: Context): ViewModelFactory {
             if (INSTANCE == null) {
                 synchronized(ViewModelFactory::class.java) {
-                    INSTANCE = ViewModelFactory(Injection.provideRepository(context))
+                    INSTANCE = ViewModelFactory(Injection.provideRepository(context), UserPreference.getInstance(context.dataStore))
                 }
             }
             return INSTANCE as ViewModelFactory

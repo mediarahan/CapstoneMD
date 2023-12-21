@@ -6,6 +6,7 @@
         android:title="Hidden Gem"
         android:iconTint="@color/backgroundColor"
         android:icon="@drawable/baseline_diamond_24"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:checkable="true"/>
 
 </menu>
