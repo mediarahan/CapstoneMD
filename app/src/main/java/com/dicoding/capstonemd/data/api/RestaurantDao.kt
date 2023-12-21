@@ -24,4 +24,7 @@ interface RestaurantDao {
     @Query("SELECT COUNT(*) FROM restaurants WHERE food_category = :category")
     suspend fun countRestaurantsByCategory(category: String): Int
 
+    @Query("SELECT * FROM restaurants WHERE hidden_gem = 1")
+    fun getHiddenGems(): LiveData<List<Restaurant>>
+
 }
