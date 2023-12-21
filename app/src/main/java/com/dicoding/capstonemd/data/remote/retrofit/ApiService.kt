@@ -2,6 +2,7 @@ package com.dicoding.capstonemd.data.remote.retrofit
 
 import com.dicoding.capstonemd.data.remote.response.LoginResponse
 import com.dicoding.capstonemd.data.remote.response.RegisterResponse
+import com.dicoding.capstonemd.data.remote.response.RestaurantResponse
 import com.dicoding.capstonemd.data.remote.response.VerifyResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -30,4 +31,14 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password: String
     ): LoginResponse
+
+    @FormUrlEncoded
+    @POST("maps/nearest-restaurant")
+    suspend fun getRestaurant(
+        @Field("menu") menu: String,
+        @Field("latitude") latitude: String,
+        @Field("longitude") longitude: String,
+        @Field("radius") radius: Int
+    ): RestaurantResponse
+
 }

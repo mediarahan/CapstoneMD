@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.capstonemd.di.Injection
 import com.dicoding.capstonemd.repository.LocalbiteRepository
+import com.dicoding.capstonemd.ui.detail.TabMapsViewModel
 import com.dicoding.capstonemd.ui.login.LoginViewModel
 import com.dicoding.capstonemd.ui.main.MainViewModel
 import com.dicoding.capstonemd.ui.register.RegisterViewModel
@@ -26,6 +27,9 @@ class ViewModelFactory(private val repository: LocalbiteRepository) : ViewModelP
             }
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(TabMapsViewModel::class.java) -> {
+                TabMapsViewModel(repository) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

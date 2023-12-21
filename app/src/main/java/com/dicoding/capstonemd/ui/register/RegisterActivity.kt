@@ -35,23 +35,25 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //viewmodel
+        // viewmodel
         val factory: ViewModelFactory = ViewModelFactory.getInstance(applicationContext)
         registerViewModel = viewModels<RegisterViewModel> {
             factory
         }.value
 
-        registerViewModel.isUserLoggedIn.observe(this) {isUserLoggedIn ->
+        // Hide action bar and status bar
+        setupView()
+
+        // Check if the user is already logged in
+        registerViewModel.isUserLoggedIn.observe(this) { isUserLoggedIn ->
             Log.d("LiveData", "isUserLoggedIn changed: $isUserLoggedIn")
-            if(isUserLoggedIn == true) {
+            if (isUserLoggedIn == true) {
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {
-                setupView()
                 setupAction()
-
                 binding.tvActionLogin.setOnClickListener {
-                    //intent text ke login
+                    // Intent to login
                     val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                     startActivity(intent)
                 }
@@ -95,10 +97,8 @@ class RegisterActivity : AppCompatActivity() {
                             showToast(message)
                             showLoading(false)
 
-                            //selesai register pindah ke menu login
+                            // Finished register, move to verify activity
                             val intent = Intent(this@RegisterActivity, VerifyActivity::class.java)
-                            //send email data
-                            intent.putExtra("email", email)                            //send email data
                             intent.putExtra("email", email)
                             startActivity(intent)
                             finish()
@@ -110,6 +110,7 @@ class RegisterActivity : AppCompatActivity() {
                             showLoading(false)
                         }
 
+                        else -> {}
                     }
                 }
             }
@@ -123,5 +124,4 @@ class RegisterActivity : AppCompatActivity() {
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
 }

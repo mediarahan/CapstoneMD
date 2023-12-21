@@ -94,6 +94,7 @@ class LoginActivity : AppCompatActivity() {
                             showLoading(false)
                         }
 
+                        else -> {}
                     }
                 }
             }

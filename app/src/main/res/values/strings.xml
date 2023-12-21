@@ -52,4 +52,7 @@
     <string name="submit">SUBMIT</string>
     <string name="verification">Verification</string>
     <string name="john_doe">John Doe</string>
+    <string name="latitude">Latitude: %.6f</string>
+    <string name="longitude">Longitude: %.6f</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
