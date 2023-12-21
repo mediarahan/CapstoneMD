@@ -3,6 +3,7 @@ package com.dicoding.capstonemd.ui.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import androidx.activity.viewModels
@@ -67,7 +68,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowCustomEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
@@ -97,6 +97,11 @@ class MainActivity : AppCompatActivity() {
             }
             // Add more cases if needed for other menu items
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.dummy_menu, menu)
+        return true
     }
 
     override fun onBackPressed() {

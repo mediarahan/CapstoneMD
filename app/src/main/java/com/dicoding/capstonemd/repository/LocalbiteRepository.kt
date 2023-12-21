@@ -14,6 +14,7 @@ import com.dicoding.capstonemd.data.local.fake.Fake
 import com.dicoding.capstonemd.data.local.fake.FakeData
 import com.dicoding.capstonemd.data.remote.response.LoginResponse
 import com.dicoding.capstonemd.data.remote.response.RestaurantsItem
+import com.dicoding.capstonemd.data.remote.response.UserPrefResponse
 import com.dicoding.capstonemd.data.remote.response.VerifyResponse
 import com.dicoding.capstonemd.pref.UserModel
 import kotlinx.coroutines.flow.map
@@ -64,9 +65,13 @@ class LocalbiteRepository(
             userPreference.saveSession(userModel)
 
             emit(Result.Success(requestBody))
-        } catch (e:Exception) {
+        } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }
+    }
+
+    suspend fun updateUserPreferences(userPreferences: Map<String, ApiService.UserPreferences>): UserPrefResponse {
+        return apiService.putUserPreference(userPreferences)
     }
 
     suspend fun logout() {
@@ -81,7 +86,12 @@ class LocalbiteRepository(
 
     //getting restaurant data
 
-    suspend fun getRestaurantData(menu: String, latitude: String, longitude: String, radius: Int): List<Restaurant> {
+    suspend fun getRestaurantData(
+        menu: String,
+        latitude: String,
+        longitude: String,
+        radius: Int
+    ): List<Restaurant> {
         try {
             val requestBody = apiService.getRestaurant(menu, latitude, longitude, radius)
             val restaurants = requestBody.restaurants
@@ -96,7 +106,10 @@ class LocalbiteRepository(
     }
 
     //map the response
-    private fun mapResponseToEntity (restaurants: List<RestaurantsItem?>, fakeData: List<Fake>): List<Restaurant> {
+    private fun mapResponseToEntity(
+        restaurants: List<RestaurantsItem?>,
+        fakeData: List<Fake>
+    ): List<Restaurant> {
         val mappedRestaurants = mutableListOf<Restaurant>()
         for (item in restaurants) {
             item?.let {
@@ -109,7 +122,7 @@ class LocalbiteRepository(
                         vicinity = item.vicinity ?: "",
                         hiddenGem = item.hiddenGem ?: false,
                         photoReference = item.photos?.get(0)?.photoReference ?: "",
-                        foodCategory = fakeData.find {it.name == item.name}?.name ?: "Pasta",
+                        foodCategory = fakeData.find { it.name == item.name }?.name ?: "Pasta",
                     )
                 )
             }

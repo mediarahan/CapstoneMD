@@ -114,11 +114,6 @@ class TabMapsFragment() : Fragment() {
                 }
             }
         }
-//        binding.mapsButton.setOnClickListener {
-//            // Start MapsActivity
-//            val intent = Intent(requireContext(), MapsActivity::class.java)
-//            startActivity(intent)
-//        }
     }
 
     private val requestPermissionLauncher =
@@ -170,8 +165,6 @@ class TabMapsFragment() : Fragment() {
                 } else {
                     // Location not found, hide UI elements
                     showToast("Location Not Found")
-                    //hideLocationUI()
-                    // Optionally hide other relevant views related to location
                 }
             }
         } else {
@@ -188,18 +181,8 @@ class TabMapsFragment() : Fragment() {
         val latitude = location.latitude.toString()
         val longitude = location.longitude.toString()
 
-//        // Update UI with latitude and longitude
-//        binding.latitude.text = "Latitude: $latitude"
-//        binding.longitude.text = "Longitude: $longitude"
-
         tabMapsViewModel.fetchRestaurantData(name, latitude, longitude, 2000)
     }
-
-//    private fun hideLocationUI() {
-//        binding.latitude.visibility = View.GONE
-//        binding.longitude.visibility = View.GONE
-//        // Optionally hide other relevant views related to location
-//    }
 
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()

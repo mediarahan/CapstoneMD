@@ -55,4 +55,42 @@
     <string name="latitude">Latitude: %.6f</string>
     <string name="longitude">Longitude: %.6f</string>
     <string name="title_activity_maps">MapsActivity</string>
+
+    <string-array name="activity_levels">
+        <item>Little/no exercise</item>
+        <item>Light exercise</item>
+        <item>Moderate exercise (3-5 days/wk)</item>
+        <item>Very active (6-7 days/wk)</item>
+    </string-array>
+
+    <string-array name="weight_loss_options">
+        <item>Maintain weight</item>
+        <item>Mild weight loss</item>
+        <item>Weight loss</item>
+        <item>Extreme weight loss</item>
+    </string-array>
+
+    <string-array name="allergen_options">
+        <item>Peanuts</item>
+        <item>Dairy</item>
+        <item>Soy</item>
+        <item>gluten</item>
+        <item>Egg</item>
+        <item>Shellfish</item>
+    </string-array>
+
+    <string-array name="meal_options">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="disease_options">
+        <item>Obesity</item>
+        <item>heart_disease</item>
+        <item>hypertension</item>
+        <item>kidney_disease</item>
+        <item>diabetes</item>
+        <item>healthy</item>
+    </string-array>
 </resources>

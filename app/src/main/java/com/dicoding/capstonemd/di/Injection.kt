@@ -12,7 +12,7 @@ object Injection {
 
     fun provideRepository(context: Context): LocalbiteRepository {
         val pref = UserPreference.getInstance(context.dataStore)
-        val apiService = ApiConfig.getApiService()
+        val apiService = ApiConfig.getApiService(context)
         val restaurantDao = provideDao(context) // Get the DAO
         return LocalbiteRepository.getInstance(apiService, pref, restaurantDao)
     }

@@ -16,6 +16,7 @@ import com.dicoding.capstonemd.ui.main.MainActivity
 import com.dicoding.capstonemd.R
 import com.dicoding.capstonemd.databinding.ActivityLoginBinding
 import com.dicoding.capstonemd.factory.ViewModelFactory
+import com.dicoding.capstonemd.ui.question.QuestionActivity
 import com.dicoding.capstonemd.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -83,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
                             showToast(message)
                             showLoading(false)
 
-                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                            val intent = Intent(this@LoginActivity, QuestionActivity::class.java)
                             startActivity(intent)
                             finish()
                         }
