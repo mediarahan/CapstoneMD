@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/IvAvatar"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:scaleType="centerCrop"
             card_view:layout_constraintEnd_toStartOf="@id/simple_title_text"
             card_view:layout_constraintStart_toStartOf="parent"

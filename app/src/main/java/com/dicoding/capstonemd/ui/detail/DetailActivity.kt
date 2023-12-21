@@ -1,14 +1,18 @@
 package com.dicoding.capstonemd.ui.detail
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.ImageView
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.dicoding.capstonemd.R
 import com.dicoding.capstonemd.adapter.SectionsPagerAdapter
-
 import com.dicoding.capstonemd.data.local.fake.FakeNutritionData
 import com.dicoding.capstonemd.databinding.ActivityDetailBinding
+import com.dicoding.capstonemd.ui.settings.SettingsActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -29,8 +33,10 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+
         val name = intent.getStringExtra("name")
-        val avatarUrl = intent.getIntExtra("avatar",-1)
+        val avatarUrl = intent.getIntExtra("avatar", -1)
         val description = intent.getStringExtra("description")
 
         val nutritionId = intent.getIntExtra("id", -1)
@@ -38,29 +44,60 @@ class DetailActivity : AppCompatActivity() {
 
         if (fakeNutrition != null) {
             //setDetailedData(fakeNutrition)
-
             binding.detailTitleText.text = name
             binding.detailSubtitleText.text = description
             binding.detailImage.setImageResource(avatarUrl)
 
-            val sectionsPagerAdapter = SectionsPagerAdapter(this)
+            val sectionsPagerAdapter = SectionsPagerAdapter(this, name)
             val viewPager: ViewPager2 = findViewById(R.id.view_pager)
             viewPager.adapter = sectionsPagerAdapter
             val tabs: TabLayout = findViewById(R.id.tabs)
-            TabLayoutMediator(tabs,viewPager) { tab, position ->
+            TabLayoutMediator(tabs, viewPager) { tab, position ->
                 tab.text = resources.getString(TAB_TITLES[position])
             }.attach()
 
             supportActionBar?.elevation = 0f
         }
+
+// Show back arrow and set custom ActionBar layout
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        val customActionBar = layoutInflater.inflate(R.layout.custom_action_bar, null)
+        val customImageView: ImageView = customActionBar.findViewById(R.id.customImageView)
+        customImageView.setImageResource(R.drawable.logo)
+
+        supportActionBar?.customView = customActionBar
+        supportActionBar?.elevation = 0f
     }
 
-//    private fun setDetailedData(nutrition: Nutrition) {
-//        // Set data to UI elements
-//        binding.detailCarbText.text = "Carb: ${nutrition.carb} g"
-//        binding.detailProteinText.text = "Protein: ${nutrition.protein} g"
-//        binding.detailFatText.text = "Fat: ${nutrition.fat} g"
-//        binding.detailVitaminText.text = "Vitamins: ${nutrition.vitamins}"
-//        binding.detailMineralText.text = "Minerals: ${nutrition.minerals}"
-//    }
+
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+
+            R.id.menu_hidden_gem -> {
+                val intent = Intent(this@DetailActivity, SettingsActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.detail_menu, menu)
+        return true
+    }
+
 }

@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -9,7 +11,7 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.dicoding.capstonemd"
+        applicationId = "com.dicoding.localbite"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -25,6 +27,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "API_KEY", "\"AIzaSyAifXUUJFiZLxQT8ZJWuEtmqBoiHig1T8Q\"")
+        }
+        debug {
+            buildConfigField("String", "API_KEY", "\"AIzaSyAifXUUJFiZLxQT8ZJWuEtmqBoiHig1T8Q\"")
         }
     }
     compileOptions {
@@ -40,6 +46,8 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
+
     }
 }
 
@@ -73,5 +81,16 @@ dependencies {
 
     //datastore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    //maps
+    implementation("com.google.android.gms:play-services-maps:18.0.0")
+    implementation("com.google.android.gms:play-services-location:18.0.0")
+
+    //room + vm + livedata
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.room:room-ktx:2.5.2")
+    implementation("androidx.room:room-runtime:2.5.2")
+    ksp("androidx.room:room-compiler:2.5.2")
 
 }

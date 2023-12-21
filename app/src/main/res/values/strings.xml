@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CapstoneMD</string>
+    <string name="app_name">LocalBite</string>
     <string name="title_home">Home</string>
     <string name="title_chatbot">Chatbot</string>
     <string name="title_history">History</string>
@@ -52,4 +52,7 @@
     <string name="submit">SUBMIT</string>
     <string name="verification">Verification</string>
     <string name="john_doe">John Doe</string>
+    <string name="latitude">Latitude: %.6f</string>
+    <string name="longitude">Longitude: %.6f</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
