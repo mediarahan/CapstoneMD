@@ -35,14 +35,10 @@ class ProfileFragment : Fragment() {
 
 // Observe changes to both user email and display name
         lifecycleScope.launchWhenStarted {
-            // Collect the email first
             userPreference.getUserEmail().collect { userEmail ->
-                // Update the TextView with the retrieved email
                 binding.tvEmail.text = userEmail
 
-                // Now, collect the display name
                 userPreference.getUserDisplayName().collect { userDisplayName ->
-                    // Update the TextView with the retrieved display name
                     binding.tvName.text = userDisplayName
                 }
             }

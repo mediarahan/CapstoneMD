@@ -41,7 +41,6 @@ class RestaurantAdapter : ListAdapter<Restaurant, RestaurantAdapter.RestaurantVi
             binding.ratingTextView.text = restaurant.rating.toString() + " "
             binding.simpleSubtitleText.text = restaurant.vicinity
 
-            // Load image using library like Glide or Picasso
             val apiKey = BuildConfig.API_KEY
             val imageUrl = getPhotoUrl(restaurant.photoReference, apiKey)
             Glide.with(itemView.context)

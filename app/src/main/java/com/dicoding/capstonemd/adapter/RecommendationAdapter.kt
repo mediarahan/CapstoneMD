@@ -44,9 +44,7 @@ class RecommendationAdapter : ListAdapter<Recommendation, RecommendationAdapter.
         fun bind(recommendation: Recommendation) {
             binding.simpleTitleText.text = recommendation.name
             binding.simpleSubtitleText.text = recommendation.mealTime
-            // Check if images list is not null and not empty
 
-            // Load the first image URL using Glide
             if (recommendation.images != null) {
                 Glide.with(itemView)
                     .load(recommendation.images)

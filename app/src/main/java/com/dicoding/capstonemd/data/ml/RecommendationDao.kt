@@ -16,8 +16,4 @@ interface RecommendationDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(vararg tasks: Recommendation)
-
-//    @Query("SELECT * FROM restaurants WHERE food_category = :category")
-//    suspend fun getRecommendationsByCategor(category: String): List<Restaurant>
-
 }

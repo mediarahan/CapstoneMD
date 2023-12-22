@@ -55,23 +55,17 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout : DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
 
-        // Accessing the header views
         val headerView = navView.getHeaderView(0)
         nameTv = headerView.findViewById(R.id.nameTv)
         emailTv = headerView.findViewById(R.id.emailTv)
 
         userPreference = UserPreference.getInstance(this.dataStore)
 
-        // Observe changes to both user email and display name
         lifecycleScope.launchWhenStarted {
-            // Collect the email first
             userPreference.getUserEmail().collect { userEmail ->
-                // Update the TextView with the retrieved email
                 emailTv.text = userEmail
 
-                // Now, collect the display name
                 userPreference.getUserDisplayName().collect { userDisplayName ->
-                    // Update the TextView with the retrieved display name
                     nameTv.text = userDisplayName
                 }
             }
@@ -133,7 +127,6 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this@MainActivity, LoginActivity::class.java)
                 startActivity(intent)
             }
-            // Add more cases if needed for other menu items
         }
     }
 

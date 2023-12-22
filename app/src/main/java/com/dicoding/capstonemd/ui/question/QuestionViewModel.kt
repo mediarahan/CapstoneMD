@@ -28,5 +28,4 @@ class QuestionViewModel(private val repository: LocalbiteRepository) : ViewModel
         }
     }
 
-    // Other ViewModel functions can go here...
 }

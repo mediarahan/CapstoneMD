@@ -98,7 +98,6 @@ class TabMapsFragment() : Fragment() {
                     }
 
                     is Result.Success -> {
-                        // Update the RecyclerView adapter with the new data
                         restaurantAdapter.submitList(result.data)
                         showLoading(false)
                     }
@@ -122,14 +121,11 @@ class TabMapsFragment() : Fragment() {
                 if (permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true &&
                     permissions[Manifest.permission.ACCESS_COARSE_LOCATION] == true
                 ) {
-                    // Do nothing or handle the case where permissions are granted
                 } else {
-                    // Explain why location is needed
                     val dialog = AlertDialog.Builder(requireContext())
                         .setTitle("Location Required")
                         .setMessage("This feature requires access to your location to function properly. Please enable location access in your settings.")
                         .setPositiveButton("Open Settings") { _, _ ->
-                            // Open settings for location permissions
                             Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS).let {
                                 viewLifecycleOwner.lifecycleScope.launch {
                                     requireActivity().startActivity(it)
@@ -138,7 +134,6 @@ class TabMapsFragment() : Fragment() {
                         }
                         .setNegativeButton("Cancel") { _, _ ->
                             // Handle user canceling the dialog
-                            // You could display an alternative functionality or error message
                         }
                         .create()
                     dialog.show()

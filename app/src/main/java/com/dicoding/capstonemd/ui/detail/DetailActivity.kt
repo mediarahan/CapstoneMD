@@ -48,10 +48,8 @@ class DetailActivity : AppCompatActivity() {
             binding.detailSubtitleText.text = description
 
             if (avatarUrl != -1) {
-                // Set the image resource if avatarUrl is not -1
                 binding.detailImage.setImageResource(avatarUrl)
             } else {
-                // Set a placeholder image resource if avatarUrl is -1 or null
                 binding.detailImage.setImageResource(R.drawable.logo)
             }
 
@@ -66,7 +64,6 @@ class DetailActivity : AppCompatActivity() {
             supportActionBar?.elevation = 0f
         }
 
-// Show back arrow and set custom ActionBar layout
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowCustomEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -78,8 +75,6 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.customView = customActionBar
         supportActionBar?.elevation = 0f
     }
-
-
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

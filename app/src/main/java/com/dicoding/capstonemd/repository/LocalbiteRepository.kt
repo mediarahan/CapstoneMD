@@ -68,13 +68,11 @@ class LocalbiteRepository(
             val userModel = UserModel(email, accessToken, refreshToken, true)
             userPreference.saveSession(userModel)
 
-            // Save email and display name to preferences or database
             val userData = requestBody.userData
             userData?.let {
                 val userEmail = it.email
                 val userDisplayName = it.displayName
 
-                // Replace these lines with your actual save functions
                 if (userEmail != null) {
                     userPreference.saveUserEmail(userEmail)
                 }
@@ -119,7 +117,6 @@ class LocalbiteRepository(
             mappedRestaurants?.let { restaurantDao.insertRestaurants(it) }
             return mappedRestaurants!!
         } catch (e: Exception) {
-            // Handle the exception or throw it if needed
             throw e
         }
     }
@@ -166,7 +163,6 @@ class LocalbiteRepository(
             mappedRecommendation?.let { recommendationDao.insertRecommendations(it) }
             return mappedRecommendation!!
         } catch (e: Exception) {
-            // Handle the exception or throw it if needed
             throw e
         }
     }
