@@ -56,4 +56,8 @@
     <string name="longitude">Longitude: %.6f</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="localbite_startup">Logo</string>
+    <string name="welcome_message">Welcome %1$s</string>
+    <string name="welcome_message_placeholder">Welcome %1$s</string>
+
+
 </resources>

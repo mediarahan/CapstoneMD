@@ -28,6 +28,8 @@ class HomepageFragment : Fragment() {
 
         val fakeDataList = FakeData.getFakeData()
         setHomepageData(fakeDataList)
+
+
     }
 
     private fun setHomepageData(detailedItemsData: List<Fake>) {
@@ -37,7 +39,6 @@ class HomepageFragment : Fragment() {
         binding.rvFoodRecommendation.layoutManager = layoutManager
         binding.rvFoodRecommendation.adapter = adapter
     }
-
 
 
 }
