@@ -10,6 +10,8 @@ import com.dicoding.capstonemd.repository.LocalbiteRepository
 import com.dicoding.capstonemd.ui.detail.TabMapsViewModel
 import com.dicoding.capstonemd.ui.login.LoginViewModel
 import com.dicoding.capstonemd.ui.main.MainViewModel
+import com.dicoding.capstonemd.ui.question.QuestionViewModel
+import com.dicoding.capstonemd.ui.recommend.RecommendationViewModel
 import com.dicoding.capstonemd.ui.register.RegisterViewModel
 import com.dicoding.capstonemd.ui.settings.SettingsViewModel
 import com.dicoding.capstonemd.ui.verify.VerifyViewModel
@@ -36,6 +38,12 @@ class ViewModelFactory(private val repository: LocalbiteRepository, private val 
             }
             modelClass.isAssignableFrom(SettingsViewModel::class.java) -> {
                 SettingsViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(QuestionViewModel::class.java) -> {
+                QuestionViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(RecommendationViewModel::class.java) -> {
+                RecommendationViewModel(repository) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

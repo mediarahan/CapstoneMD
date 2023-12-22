@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_ml_recommend"
+        android:title="Hidden Gem"
+        app:iconTint="@color/backgroundColor"
+        android:icon="@drawable/baseline_input_24"
+        app:showAsAction="ifRoom" />
+
+</menu>

@@ -1,0 +1,24 @@
+{
+  "recommendation": [
+    {
+      "id": 1,
+      "name": "Nasi Goreng",
+      "mealTime": "Lunch",
+      "calories": 500.0,
+      "protein": 20.0,
+      "carbs": 60.0,
+      "fat": 25.0,
+      "images": "https://img.kurio.network/ewrCJ9eRNpljU-80vrqWDQkN7o4=/1200x675/filters:quality(80)/https://kurio-img.kurioapps.com/20/10/10/a7e9eaa0-1c22-42b0-a11f-0a5ad1d30126.jpeg"
+    },
+    {
+      "id": 1,
+      "name": "Sate Ayam",
+      "mealTime": "Lunch",
+      "calories": 500.0,
+      "protein": 20.0,
+      "carbs": 60.0,
+      "fat": 25.0,
+      "images": "https://www.dapurkobe.co.id/wp-content/uploads/sate-ayam.jpg"
+    }
+  ]
+}

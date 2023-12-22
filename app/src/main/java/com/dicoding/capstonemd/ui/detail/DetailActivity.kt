@@ -46,7 +46,12 @@ class DetailActivity : AppCompatActivity() {
             //setDetailedData(fakeNutrition)
             binding.detailTitleText.text = name
             binding.detailSubtitleText.text = description
-            binding.detailImage.setImageResource(avatarUrl)
+
+            if (avatarUrl != -1) {
+                binding.detailImage.setImageResource(avatarUrl)
+            } else {
+                binding.detailImage.setImageResource(R.drawable.logo)
+            }
 
             val sectionsPagerAdapter = SectionsPagerAdapter(this, name)
             val viewPager: ViewPager2 = findViewById(R.id.view_pager)
@@ -59,7 +64,6 @@ class DetailActivity : AppCompatActivity() {
             supportActionBar?.elevation = 0f
         }
 
-// Show back arrow and set custom ActionBar layout
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowCustomEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -71,8 +75,6 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.customView = customActionBar
         supportActionBar?.elevation = 0f
     }
-
-
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
