@@ -8,8 +8,6 @@ import com.dicoding.capstonemd.pref.UserPreference
 import com.dicoding.capstonemd.pref.dataStore
 import com.dicoding.capstonemd.repository.LocalbiteRepository
 import com.dicoding.capstonemd.ui.detail.TabMapsViewModel
-import com.dicoding.capstonemd.ui.homepage.HomepageFragment
-import com.dicoding.capstonemd.ui.homepage.HomepageViewModel
 import com.dicoding.capstonemd.ui.login.LoginViewModel
 import com.dicoding.capstonemd.ui.main.MainViewModel
 import com.dicoding.capstonemd.ui.question.QuestionViewModel
@@ -43,9 +41,6 @@ class ViewModelFactory(private val repository: LocalbiteRepository, private val 
             }
             modelClass.isAssignableFrom(QuestionViewModel::class.java) -> {
                 QuestionViewModel(repository) as T
-            }
-            modelClass.isAssignableFrom(HomepageViewModel::class.java) -> {
-                HomepageViewModel(repository) as T
             }
             modelClass.isAssignableFrom(RecommendationViewModel::class.java) -> {
                 RecommendationViewModel(repository) as T

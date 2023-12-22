@@ -161,7 +161,7 @@ class LocalbiteRepository(
     suspend fun getRecommendationData(): List<Recommendation> {
         try {
             val requestBody = apiService.getMealRecommendations()
-            val recommendation = requestBody.recommendationResponse
+            val recommendation = requestBody.recommendations
             val mappedRecommendation = recommendation?.let { mapRecommendationToEntity(it) }
             mappedRecommendation?.let { recommendationDao.insertRecommendations(it) }
             return mappedRecommendation!!

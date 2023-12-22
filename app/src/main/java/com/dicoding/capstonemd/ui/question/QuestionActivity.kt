@@ -3,6 +3,7 @@ package com.dicoding.capstonemd.ui.question
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import androidx.activity.viewModels
@@ -13,12 +14,11 @@ import com.dicoding.capstonemd.data.remote.retrofit.ApiService
 import com.dicoding.capstonemd.databinding.ActivityQuestionBinding
 import com.dicoding.capstonemd.factory.ViewModelFactory
 import com.dicoding.capstonemd.ui.main.MainActivity
+import com.dicoding.capstonemd.ui.recommend.RecommendationActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
-//行きましょう！！！！
 
 class QuestionActivity : AppCompatActivity() {
 
@@ -130,6 +130,12 @@ class QuestionActivity : AppCompatActivity() {
         val customImageView: ImageView = customActionBar.findViewById(R.id.customImageView)
         customImageView.setImageResource(R.drawable.logo)
 
+        // Enable the default action bar with home button and display the title
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(android.R.color.transparent)
+
+
         supportActionBar?.customView = customActionBar
         supportActionBar?.elevation = 0f
     }
@@ -138,6 +144,19 @@ class QuestionActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.dummy_menu, menu)
         return true
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_ml_recommend -> {
+                val intent = Intent(this@QuestionActivity, MainActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(item)
+    }
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

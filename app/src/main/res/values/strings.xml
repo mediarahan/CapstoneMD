@@ -57,6 +57,7 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
+    <string name="localbite_startup">Your craving companion!</string>
 
     <string-array name="activity_levels">
         <item>Little/no exercise</item>

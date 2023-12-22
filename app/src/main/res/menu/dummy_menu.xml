@@ -4,9 +4,8 @@
     <item
         android:id="@+id/menu_ml_recommend"
         android:title="Hidden Gem"
-        android:iconTint="@color/backgroundColor"
+        app:iconTint="@color/backgroundColor"
         android:icon="@drawable/baseline_input_24"
-        app:showAsAction="ifRoom"
-        android:checkable="true"/>
+        app:showAsAction="ifRoom" />
 
 </menu>

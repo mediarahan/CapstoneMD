@@ -23,6 +23,7 @@ import com.dicoding.capstonemd.pref.UserPreference
 import com.dicoding.capstonemd.pref.dataStore
 import com.dicoding.capstonemd.ui.login.LoginActivity
 import com.dicoding.capstonemd.ui.login.LoginViewModel
+import com.dicoding.capstonemd.ui.recommend.RecommendationActivity
 import com.dicoding.capstonemd.ui.settings.SettingsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -107,6 +108,7 @@ class MainActivity : AppCompatActivity() {
         val customImageView: ImageView = customActionBar.findViewById(R.id.customImageView)
         customImageView.setImageResource(R.drawable.logo)
 
+        supportActionBar?.setHomeAsUpIndicator(android.R.color.transparent)
         supportActionBar?.customView = customActionBar
         supportActionBar?.elevation = 0f
     }
@@ -143,7 +145,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_ml_recommend -> {
-                onBackPressed()
+                val intent = Intent(this@MainActivity, RecommendationActivity::class.java)
+                startActivity(intent)
                 return true
             }
         }
@@ -163,5 +166,4 @@ class MainActivity : AppCompatActivity() {
         }
         alertDialogBuilder.show()
     }
-
 }
