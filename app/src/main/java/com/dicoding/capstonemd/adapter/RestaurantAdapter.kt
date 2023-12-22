@@ -1,5 +1,6 @@
 package com.dicoding.capstonemd.adapter
 
+import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.dicoding.capstonemd.BuildConfig
 import com.dicoding.capstonemd.data.api.Restaurant
 import com.dicoding.capstonemd.data.remote.response.RestaurantsItem
 import com.dicoding.capstonemd.databinding.RestaurantRecommendationRvBinding
+import com.dicoding.capstonemd.ui.maps.MapsActivity
 import com.google.gson.Gson
 
 class RestaurantAdapter : ListAdapter<Restaurant, RestaurantAdapter.RestaurantViewHolder>(DIFF_CALLBACK) {
@@ -24,9 +26,16 @@ class RestaurantAdapter : ListAdapter<Restaurant, RestaurantAdapter.RestaurantVi
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
         val restaurant = getItem(position)
         holder.bind(restaurant)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, MapsActivity::class.java)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     inner class RestaurantViewHolder(private val binding: RestaurantRecommendationRvBinding) : RecyclerView.ViewHolder(binding.root) {
+
+
         fun bind(restaurant: Restaurant) {
             binding.simpleTitleText.text = restaurant.name
             binding.ratingTextView.text = restaurant.rating.toString() + " "

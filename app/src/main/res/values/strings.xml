@@ -55,6 +55,8 @@
     <string name="latitude">Latitude: %.6f</string>
     <string name="longitude">Longitude: %.6f</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
 
     <string-array name="activity_levels">
         <item>Little/no exercise</item>

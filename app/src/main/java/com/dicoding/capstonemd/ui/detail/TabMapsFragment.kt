@@ -26,8 +26,6 @@ import com.dicoding.capstonemd.pref.UserPreference
 import com.dicoding.capstonemd.pref.dataStore
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class TabMapsFragment() : Fragment() {

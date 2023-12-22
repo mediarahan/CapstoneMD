@@ -112,7 +112,7 @@ class QuestionActivity : AppCompatActivity() {
                     // Call ViewModel function to update preferences
                     questionViewModel.updateUserPreferences(userPreferences)
 
-                    delay(10000)
+                    delay(3000)
 
                     // Move to the next activity or perform other actions
                     val intent = Intent(applicationContext, MainActivity::class.java)

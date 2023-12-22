@@ -44,6 +44,8 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
 
     private object PreferencesKeys {
         val IS_HIDDEN_GEM = booleanPreferencesKey("is_hidden_gem")
+        val USER_EMAIL = stringPreferencesKey("user_email")
+        val USER_DISPLAY_NAME = stringPreferencesKey("user_display_name")
     }
 
     fun isHiddenGem(): Flow<Boolean> {
@@ -55,6 +57,32 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
     suspend fun saveHiddenGemSetting(isHiddenGem: Boolean) {
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.IS_HIDDEN_GEM] = isHiddenGem
+        }
+    }
+
+    // Save user email and display name
+    suspend fun saveUserEmail(email: String) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.USER_EMAIL] = email
+        }
+    }
+
+    suspend fun saveUserDisplayName(displayName: String) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.USER_DISPLAY_NAME] = displayName
+        }
+    }
+
+    // Retrieve user email and display name
+    fun getUserEmail(): Flow<String> {
+        return dataStore.data.map { preferences ->
+            preferences[PreferencesKeys.USER_EMAIL] ?: ""
+        }
+    }
+
+    fun getUserDisplayName(): Flow<String> {
+        return dataStore.data.map { preferences ->
+            preferences[PreferencesKeys.USER_DISPLAY_NAME] ?: ""
         }
     }
 

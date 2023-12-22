@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
@@ -17,8 +19,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.dicoding.capstonemd.R
 import com.dicoding.capstonemd.databinding.ActivityMainBinding
 import com.dicoding.capstonemd.factory.ViewModelFactory
+import com.dicoding.capstonemd.pref.UserPreference
+import com.dicoding.capstonemd.pref.dataStore
 import com.dicoding.capstonemd.ui.login.LoginActivity
 import com.dicoding.capstonemd.ui.login.LoginViewModel
+import com.dicoding.capstonemd.ui.settings.SettingsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.launch
@@ -27,6 +32,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainViewModel: MainViewModel
+
+    private lateinit var nameTv: TextView
+    private lateinit var emailTv: TextView
+
+    private lateinit var userPreference: UserPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,8 +52,30 @@ class MainActivity : AppCompatActivity() {
 
         //Nav Drawer
         val drawerLayout : DrawerLayout = binding.drawerLayout
-
         val navView: NavigationView = binding.navView
+
+        // Accessing the header views
+        val headerView = navView.getHeaderView(0)
+        nameTv = headerView.findViewById(R.id.nameTv)
+        emailTv = headerView.findViewById(R.id.emailTv)
+
+        userPreference = UserPreference.getInstance(this.dataStore)
+
+        // Observe changes to both user email and display name
+        lifecycleScope.launchWhenStarted {
+            // Collect the email first
+            userPreference.getUserEmail().collect { userEmail ->
+                // Update the TextView with the retrieved email
+                emailTv.text = userEmail
+
+                // Now, collect the display name
+                userPreference.getUserDisplayName().collect { userDisplayName ->
+                    // Update the TextView with the retrieved display name
+                    nameTv.text = userDisplayName
+                }
+            }
+        }
+
         //Bottom Navbar
         val navBottomView: BottomNavigationView = binding.bottomNavView
 
@@ -95,6 +127,10 @@ class MainActivity : AppCompatActivity() {
                     finish()
                 }
             }
+            R.id.nav_profile -> {
+                val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                startActivity(intent)
+            }
             // Add more cases if needed for other menu items
         }
     }
@@ -103,6 +139,17 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.dummy_menu, menu)
         return true
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_ml_recommend -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
     override fun onBackPressed() {
         val alertDialogBuilder = AlertDialog.Builder(this)

@@ -8,9 +8,9 @@ import android.widget.ImageView
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.dicoding.capstonemd.R
 import com.dicoding.capstonemd.adapter.SectionsPagerAdapter
-import com.dicoding.capstonemd.data.local.fake.FakeNutritionData
 import com.dicoding.capstonemd.databinding.ActivityDetailBinding
 import com.dicoding.capstonemd.ui.settings.SettingsActivity
 import com.google.android.material.tabs.TabLayout
@@ -36,28 +36,27 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         val name = intent.getStringExtra("name")
-        val avatarUrl = intent.getIntExtra("avatar", -1)
+        val avatarUrl = intent.getStringExtra("avatar")
         val description = intent.getStringExtra("description")
 
-        val nutritionId = intent.getIntExtra("id", -1)
-        val fakeNutrition = FakeNutritionData.nutritionData.find { it.id == nutritionId }
+        //setDetailedData(fakeNutrition)
+        binding.detailTitleText.text = name
+        binding.detailSubtitleText.text = description
 
-        if (fakeNutrition != null) {
-            //setDetailedData(fakeNutrition)
-            binding.detailTitleText.text = name
-            binding.detailSubtitleText.text = description
-            binding.detailImage.setImageResource(avatarUrl)
+        Glide.with(this)
+            .load(avatarUrl)
+            .into(binding.detailImage)
 
-            val sectionsPagerAdapter = SectionsPagerAdapter(this, name)
-            val viewPager: ViewPager2 = findViewById(R.id.view_pager)
-            viewPager.adapter = sectionsPagerAdapter
-            val tabs: TabLayout = findViewById(R.id.tabs)
-            TabLayoutMediator(tabs, viewPager) { tab, position ->
-                tab.text = resources.getString(TAB_TITLES[position])
-            }.attach()
+        val sectionsPagerAdapter = SectionsPagerAdapter(this, name)
+        val viewPager: ViewPager2 = findViewById(R.id.view_pager)
+        viewPager.adapter = sectionsPagerAdapter
+        val tabs: TabLayout = findViewById(R.id.tabs)
+        TabLayoutMediator(tabs, viewPager) { tab, position ->
+            tab.text = resources.getString(TAB_TITLES[position])
+        }.attach()
 
-            supportActionBar?.elevation = 0f
-        }
+
+        supportActionBar?.elevation = 0f
 
 // Show back arrow and set custom ActionBar layout
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -71,7 +70,6 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.customView = customActionBar
         supportActionBar?.elevation = 0f
     }
-
 
 
     override fun onSupportNavigateUp(): Boolean {

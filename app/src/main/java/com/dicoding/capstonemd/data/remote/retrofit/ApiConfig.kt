@@ -11,6 +11,7 @@ import com.dicoding.capstonemd.pref.UserPreference
 import com.dicoding.capstonemd.pref.dataStore
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import java.util.concurrent.TimeUnit
 
 object ApiConfig {
     fun getApiService(context: Context): ApiService {
@@ -33,6 +34,9 @@ object ApiConfig {
         }
 
         val client = OkHttpClient.Builder()
+            .connectTimeout(60, TimeUnit.SECONDS) // Set the connection timeout
+            .readTimeout(60, TimeUnit.SECONDS)    // Set the read timeout
+            .writeTimeout(60, TimeUnit.SECONDS)   // Set the write timeout
             .addInterceptor(loggingInterceptor)
             .addInterceptor(authInterceptor) // Add the authInterceptor here
             .build()
